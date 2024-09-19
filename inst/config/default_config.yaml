@@ -1,0 +1,12 @@
+preprocessing:
+  normalization_method: "log2"
+  filter_threshold: 0.5
+analysis:
+  method: "kmeans"
+  num_clusters: 3
+plotting:
+  color_palette: "viridis"
+  plot_width: 10
+  plot_height: 8
+# default_config_file <- system.file("config", "default_config.yaml", package = "YourPackageName")
+# default_config <- yaml::read_yaml(default_config_file)

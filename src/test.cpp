@@ -11,17 +11,20 @@ using namespace Rcpp;
 //' fancy_print(c("Hello", "World"))
 //' @export
 // [[Rcpp::export]]
-void fancy_print(CharacterVector messages) {
+void fancy_print(CharacterVector messages)
+{
   // 将 R 的 CharacterVector 转换为标准的字符串向量
   std::vector<std::string> msgs = Rcpp::as<std::vector<std::string>>(messages);
 
   // 定义一个 lambda 表达式，用于装饰字符串
-  auto decorate = [](const std::string& msg) {
+  auto decorate = [](const std::string &msg)
+  {
     return "✨ " + msg + " ✨";
   };
 
   // 使用范围循环遍历消息
-  for (const auto& msg : msgs) {
+  for (const auto &msg : msgs)
+  {
     // 装饰当前消息
     std::string decorated_msg = decorate(msg);
 

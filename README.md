@@ -12,6 +12,8 @@ coverage](https://codecov.io/gh/Younthing/rnaseq/graph/badge.svg)](https://app.c
 status](https://www.r-pkg.org/badges/version/rnaseq)](https://CRAN.R-project.org/package=rnaseq)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![CircleCI build
+status](https://circleci.com/gh/Younthing/rnaseq.svg?style=svg)](https://circleci.com/gh/Younthing/rnaseq)
 <!-- badges: end -->
 
 The goal of rnaseq is to …

@@ -1,54 +1,31 @@
 #include <Rcpp.h>
-#include <curl/curl.h>
-
 using namespace Rcpp;
 
-// 用于保存下载的数据
-size_t write_data(void *ptr, size_t size, size_t nmemb, void *stream)
-{
-    std::string data((const char *)ptr, (size_t)size * nmemb);
-    *((std::stringstream *)stream) << data << std::endl;
-    return size * nmemb;
-}
-
+//' @title Fancy Print Messages
+//' @description
+//' Prints messages with fancy decorations.
+//'
+//' @param messages A character vector of messages to print.
+//' @return None. Messages are printed to the console.
+//' @examples
+//' fancy_print(c("Hello", "World"))
+//' @export
 // [[Rcpp::export]]
-std::string download_data(std::string url)
-{
-    CURL *curl;
-    CURLcode res;
-    curl = curl_easy_init();
-    std::stringstream out;
-    if (curl)
-    {
-        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
-        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &out);
-        res = curl_easy_perform(curl);
-        curl_easy_cleanup(curl);
-        if (res != CURLE_OK)
-        {
-            Rcpp::stop("Failed to download data from URL");
-        }
-    }
-    return out.str();
-}
+void fancy_print(CharacterVector messages) {
+  // 将 R 的 CharacterVector 转换为标准的字符串向量
+  std::vector<std::string> msgs = Rcpp::as<std::vector<std::string>>(messages);
 
+  // 定义一个 lambda 表达式，用于装饰字符串
+  auto decorate = [](const std::string& msg) {
+    return "✨ " + msg + " ✨";
+  };
 
+  // 使用范围循环遍历消息
+  for (const auto& msg : msgs) {
+    // 装饰当前消息
+    std::string decorated_msg = decorate(msg);
 
-#include <omp.h>
-
-// [[Rcpp::plugins(openmp)]]
-// [[Rcpp::export]]
-NumericVector parallel_vector_addition(NumericVector a, NumericVector b) {
-  int n = a.size();
-  if (n != b.size()) {
-    Rcpp::stop("Vectors must be of the same length");
+    // 输出装饰后的消息到控制台
+    Rcpp::Rcout << decorated_msg << std::endl;
   }
-  NumericVector result(n);
-  
-  #pragma omp parallel for
-  for (int i = 0; i < n; ++i) {
-    result[i] = a[i] + b[i];
-  }
-  return result;
 }

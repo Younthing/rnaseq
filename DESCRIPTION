@@ -21,4 +21,5 @@ LazyData: true
 LinkingTo: 
     Rcpp
 Imports: 
+    magrittr,
     Rcpp

@@ -5,6 +5,9 @@
 
 <!-- badges: start -->
 
+[![Codecov test
+coverage](https://codecov.io/gh/Younthing/rnaseq/graph/badge.svg)](https://app.codecov.io/gh/Younthing/rnaseq)
+[![R-CMD-check](https://github.com/Younthing/rnaseq/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Younthing/rnaseq/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of rnaseq is to …

@@ -1,7 +1,13 @@
+^rnaseq\.Rproj$
+^\.Rproj\.user$
 ^LICENSE\.md$
-^\.github$
+^CODE_OF_CONDUCT\.md$
+^README\.Rmd$
+^codecov\.yml$
+^data-raw$
+^doc$
+^Meta$
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
-^codecov\.yml$
-^README\.Rmd$
+^\.github$

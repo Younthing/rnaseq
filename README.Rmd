@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 # rnaseq
 
 <!-- badges: start -->
+[![Codecov test coverage](https://codecov.io/gh/Younthing/rnaseq/graph/badge.svg)](https://app.codecov.io/gh/Younthing/rnaseq)
+[![R-CMD-check](https://github.com/Younthing/rnaseq/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Younthing/rnaseq/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of rnaseq is to ...
@@ -24,7 +26,7 @@ The goal of rnaseq is to ...
 
 You can install the development version of rnaseq from [GitHub](https://github.com/) with:
 
-```r
+``` r
 # install.packages("pak")
 pak::pak("Younthing/rnaseq")
 ```

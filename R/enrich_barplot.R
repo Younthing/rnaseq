@@ -10,8 +10,8 @@
 #'     \item{ONTOLOGY}{Character vector, ontology categories, such as "Biological Process", "Molecular Function", or "Cellular Component".}
 #'   }
 #' @param output_file A string specifying the file path to save the plot. If provided, the plot will be saved to this file. Default is \code{NULL}.
-#' @param width Numeric, the width of the saved plot in inches. Default is 5.
-#' @param height Numeric, the height of the saved plot in inches. Default is 4.
+#' @param width Numeric, the width of the saved plot in inches. Default is 6.
+#' @param height Numeric, the height of the saved plot in inches. Default is 8.
 #' @param dpi Numeric, the resolution of the saved plot in dots per inch. Default is 300.
 #' @param topn Integer, the maximum number of items to display per ontology category. If an ontology category has more than \code{topn} items, only the items with the lowest \code{p.adjust} values will be displayed. Default is 10.
 #' @param use_gene_ratio Logical, whether to use \code{GeneRatio} for the x-axis. If \code{FALSE}, \code{Count} will be used. Default is \code{FALSE}.

@@ -57,6 +57,19 @@ usethis::use_news_md()
 usethis::use_pipe() # 在你的包中使用 magrittr 的管道
 # 创建 R 脚本
 usethis::use_r("my_function") # 将 "my_function" 替换为您的函数名
+#  函数注释风格
+#' @title：用于描述函数的标题或名称。
+#' @description：提供该函数的简短描述。
+#' @param：列出函数的输入参数以及对每个参数的详细解释。
+#' @return：说明函数的返回值。
+#' @usage：给出函数的用法示例。
+#' @examples：提供函数的使用示例代码。
+#' @details：进一步详细说明函数的工作机制和细节。
+#' @keywords：列出与函数相关的关键词，以便在文档中进行索引。
+#' @import：声明该函数依赖的外部包。
+#' @export：表明函数将被导出，供用户使用。
+
+
 
 # 创建 inst/extdata/ 目录
 usethis::use_directory("inst/extdata")

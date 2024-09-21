@@ -116,11 +116,11 @@ enrichment_barplot <- function(
       plot.margin = margin(b = 0.05, t = 0.1, l = 0.25, r = 0.25, unit = "cm"),
       panel.background = element_blank(),
       panel.grid = element_blank(),
-      panel.border = element_rect(size = 0.5, fill = NA, color = "black"),
+      panel.border = element_rect(linewidth = 0.5, fill = NA, color = "black"),
       axis.text.y = element_text(size = 8, colour = "black", hjust = 1, vjust = 0.5),
       axis.text.x = element_text(size = 8, colour = "black", angle = 0, hjust = 0.5, vjust = 0.5),
-      axis.line = element_line(size = 0.5, colour = "black"),
-      axis.ticks = element_line(size = 0.5, colour = "black"),
+      axis.line = element_line(linewidth = 0.5, colour = "black"),
+      axis.ticks = element_line(linewidth = 0.5, colour = "black"),
       strip.background = element_rect(fill = "grey85", color = "black"),
       strip.text = element_text(size = 10, face = "bold")
     )

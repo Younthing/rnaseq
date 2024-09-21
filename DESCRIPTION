@@ -9,7 +9,6 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Suggests: 
-    ggplot2,
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
@@ -21,5 +20,8 @@ LazyData: true
 LinkingTo: 
     Rcpp
 Imports: 
+    dplyr,
+    forcats,
+    ggplot2,
     magrittr,
     Rcpp

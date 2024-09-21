@@ -9,9 +9,10 @@
 #' @return None. Messages are printed to the console.
 #' @examples
 #' fancy_print(c("Hello", "World"))
-#' @export
 #' @useDynLib rnaseq, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
+#' @export
 fancy_print <- function(messages) {
-    invisible(.Call("_rnaseq_fancy_print", PACKAGE = "rnaseq", messages))
+    invisible(.Call('_rnaseq_fancy_print', PACKAGE = 'rnaseq', messages))
 }
+

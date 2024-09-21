@@ -9,6 +9,8 @@ using namespace Rcpp;
 //' @return None. Messages are printed to the console.
 //' @examples
 //' fancy_print(c("Hello", "World"))
+//' @useDynLib rnaseq, .registration = TRUE
+//' @importFrom Rcpp sourceCpp
 //' @export
 // [[Rcpp::export]]
 void fancy_print(CharacterVector messages)

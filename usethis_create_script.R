@@ -179,10 +179,13 @@ Rcpp::compileAttributes()
 # 确保所有依赖在 DESCRIPTION 文件中正确指定
 # 将包添加到 Imports 或 Suggests 中
 usethis::use_package("dplyr") # 添加到 Imports
-usethis::use_package("ggplot2", type = "Suggests") # 添加到 Suggests
+usethis::use_package("ggplot2") # 添加到 Suggests
+usethis::use_package("forcats")
 
 # 定期更新文档，确保函数的文档与代码保持同步
 devtools::document() # 还能构建Cpp的文档
+usethis::use_directory("inst/manual")
+devtools::build_manual(path = "inst/manual") # 默认上级目录中生成pdf
 
 # 如果 README.Rmd 有更改，重新生成 README.md
 devtools::build_readme()
@@ -204,6 +207,7 @@ usethis::use_circleci_badge()
 devtools::check()
 
 # 在每次更改后，始终重新运行检查,构建ing
+devtools::document()
 devtools::build()
 devtools::install()
 devtools::clean_dll() # Removes any previously compiled DLLs
@@ -218,8 +222,14 @@ usethis::use_git()
 
 # 如果需要在包中包含某些文件，但不想在构建包时包含
 # 可以使用 usethis::use_build_ignore()
-usethis::use_build_ignore("./usethis_create_script.R") # 忽略构建时的特定文件
-
+usethis::use_build_ignore("./.aider.tags/cache.v3") # 忽略构建时的特定文件
+usethis::use_build_ignore(
+  c(
+    ".aider.chat.history.md",
+    ".aider.input.history",
+    ".lintr"
+  )
+)
 
 
 # 添加反向依赖检查，确保更新不会破坏依赖您的包的其他包

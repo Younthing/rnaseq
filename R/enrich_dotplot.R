@@ -24,8 +24,8 @@
 #' enrichment_dotplot(
 #'   data,
 #'   output_file = NULL,
-#'   width = 5,
-#'   height = 4,
+#'   width = 6,
+#'   height = 8,
 #'   dpi = 300,
 #'   topn = 10,
 #'   low_color = "blue",
@@ -45,8 +45,6 @@
 #' # Generate dot plot without saving to file
 #' p <- enrichment_dotplot(df, topn = 3)
 #' print(p)
-#' # Save plot to specified path
-#' enrichment_dotplot(df, output_file = "enrichment_dotplot.pdf", topn = 5)
 #'
 #' @details
 #' The function uses \code{ggplot2} to create a faceted dot plot of enrichment results. By default, it plots the \code{GeneRatio} on the x-axis. Setting \code{use_gene_ratio = FALSE} will plot the \code{Count} instead. The points are ordered within each facet based on the \code{p.adjust} values.
@@ -56,7 +54,9 @@
 #' When \code{output_file} is provided, the plot is saved to the specified file, and the function returns \code{NULL}. Otherwise, the ggplot object is returned for further customization or immediate display.
 #'
 #' @keywords enrichment plot gene ontology dotplot
-#' @import ggplot2 dplyr forcats
+#' @import ggplot2
+#' @import forcats
+#' @import dplyr
 #' @export
 enrichment_dotplot <- function(
     data,
@@ -68,11 +68,6 @@ enrichment_dotplot <- function(
     low_color = "blue",
     high_color = "red",
     use_gene_ratio = TRUE) {
-  # Load required packages
-  require(ggplot2)
-  require(dplyr)
-  require(forcats)
-
   Description <- Percentage <- Count <- ONTOLOGY <- GeneRatio <- p.adjust <- pvalue <- NULL # nolintr, to satisfy codetools
 
   # Ensure necessary columns are present

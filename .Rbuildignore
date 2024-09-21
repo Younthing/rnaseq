@@ -14,3 +14,7 @@
 ^cran-comments\.md$
 ^revdep$
 ^\./usethis_create_script\.R$
+^\./\.aider\.tags/cache\.v3\$
+^\.aider\.chat\.history\.md$
+^\.aider\.input\.history$
+^\.lintr$

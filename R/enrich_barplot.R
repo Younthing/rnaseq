@@ -22,8 +22,8 @@
 #' enrichment_barplot(
 #'   data,
 #'   output_file = NULL,
-#'   width = 5,
-#'   height = 4,
+#'   width = 6,
+#'   height = 8,
 #'   dpi = 300,
 #'   topn = 10,
 #'   use_gene_ratio = FALSE
@@ -40,8 +40,6 @@
 #' )
 #' # Generate bar plot without saving to file
 #' p <- enrichment_barplot(df, topn = 3)
-#' # Save plot to specified path
-#' enrichment_barplot(df, output_file = "enrichment_barplot.pdf", topn = 5)
 #'
 #' @details
 #' The function uses \code{ggplot2} to create a faceted bar plot of enrichment results. By default, it plots the \code{Count} of genes in each enriched term on the x-axis. Setting \code{use_gene_ratio = TRUE} will plot the \code{GeneRatio} instead. The bars are ordered within each facet based on the \code{p.adjust} values.
@@ -51,7 +49,9 @@
 #' When \code{output_file} is provided, the plot is saved to the specified file, and the function returns \code{NULL}. Otherwise, the ggplot object is returned for further customization or immediate display.
 #'
 #' @keywords enrichment plot gene ontology barplot
-#' @import ggplot2 forcats dplyr
+#' @import ggplot2
+#' @import forcats
+#' @import dplyr
 #' @export
 enrichment_barplot <- function(
     data,
@@ -62,9 +62,7 @@ enrichment_barplot <- function(
     topn = 10,
     use_gene_ratio = FALSE) {
   # Load required package
-  require(ggplot2)
-  require(dplyr)
-  require(forcats)
+
   Description <- Percentage <- Count <- ONTOLOGY <- GeneRatio <- p.adjust <- pvalue <- NULL # nolintr, to satisfy codetools
   # Ensure necessary columns are present
   required_cols <- c("Description", "p.adjust", "ONTOLOGY")

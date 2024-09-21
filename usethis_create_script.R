@@ -250,3 +250,8 @@ usethis::use_build_ignore(
 
 # 定期更新您的包依赖
 # 检查是否有依赖包的新版本，并确定是否需要更新
+# 每次提交前，都要运行
+# devtools::check()
+devtools::document()
+styler::style_pkg()
+lintr::lint_package()

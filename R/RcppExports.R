@@ -13,6 +13,5 @@
 #' @importFrom Rcpp sourceCpp
 #' @export
 fancy_print <- function(messages) {
-    invisible(.Call('_rnaseq_fancy_print', PACKAGE = 'rnaseq', messages))
+    invisible(.Call(`_rnaseq_fancy_print`, messages))
 }
-

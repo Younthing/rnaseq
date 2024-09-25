@@ -20,6 +20,104 @@ knitr::opts_chunk$set(
 library(rnaseq)
 ```
 
+## 数据预处理
+
+### 标准化数据
+
+```{r}
+expr_tpm <- counts_to_tpm(counts = expr_counts)
+```
+
+### 离群样本检测
+
+```{r}
+outliers <- find_outliers(
+  expression_data = expr_tpm,
+  z_threshold = -2,
+  plot_hclust = TRUE,
+  show_plot = TRUE,
+  hclust_filename = NULL,
+  connectivity_filename = NULL
+)
+```
+
+### 样本筛选
+
+```{r}
+expr_tpm <- expr_tpm[, !colnames(expr_tpm) %in% outliers]
+group_table <- group_table[group_table$sample %in% colnames(expr_tpm), ]
+```
+
+### 分组 pca 绘图
+
+```{r}
+plot_groups_pca(
+  data = expr_tpm,
+  group_data = group_table,
+  samples_in_rows = FALSE,
+  scale_data = TRUE,
+  log_transform = FALSE,
+  id_column = "sample",
+  group_column = "group",
+  geom_individuals = "point",
+  color_palette = "Set1",
+  repel_labels = FALSE,
+  n_components = 50,
+  axes = c(1, 2),
+  add_ellipses = TRUE
+)
+```
+
+## 表型评分
+
+### ssgsea
+
+```{r}
+score_res <- signature_score(
+  expression_data = expr_tpm,
+  group_data = group_table,
+  sample_column = "sample",
+  gene_sets = NULL,
+  gene_set_name = "HALLMARK",
+  method = "ssgsea",
+  num_cores = 2,
+  min_gene_count = 5,
+  group_comparisons = list(c("Normal", "Disorder")),
+  output_dir = NULL,
+  padjust_threshold = 0.05
+)
+```
+
+### zscore
+
+```{r}
+score_res <- signature_score(
+  expression_data = expr_tpm,
+  group_data = group_table,
+  sample_column = "sample",
+  gene_sets = NULL,
+  gene_set_name = "HALLMARK",
+  method = "zscore",
+  num_cores = 40,
+  min_gene_count = 5,
+  group_comparisons = list(c("Normal", "Disorder")),
+  output_dir = NULL,
+  padjust_threshold = 0.05
+)
+```
+
+### 绘图
+
+```{r}
+df_long <- tidyr::pivot_longer(score_res$signature_scores, -c(ID, group), names_to = "GeneSet", values_to = "Score")
+
+plot_signature_parallel(
+  df_long = df_long,
+  gene_sets = score_res$stat_tests$GeneSet,
+  group_levels = c("Control", "Disorder")
+)
+```
+
 ## environment
 
 ```{r}

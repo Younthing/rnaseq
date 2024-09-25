@@ -67,9 +67,12 @@ usethis::use_r("my_function") # 将 "my_function" 替换为您的函数名
 #' @details：进一步详细说明函数的工作机制和细节。
 #' @keywords：列出与函数相关的关键词，以便在文档中进行索引。
 #' @import：声明该函数依赖的外部包。
+#' @importFrom：声明该函数依赖的外部包中的特定函数。
+#' @importFrom rlang .data：引用数据框列名，避免 R CMD check 注意
 #' @export：表明函数将被导出，供用户使用。
 
-
+devtools::document() # 生成文档（从 roxygen2 注释）
+devtools::load_all()
 
 # 创建 inst/extdata/ 目录
 usethis::use_directory("inst/extdata")
@@ -77,7 +80,7 @@ usethis::use_directory("inst/extdata")
 usethis::use_data_raw(name = "my_dataset") # 将 "my_dataset" 替换为您的数据集名称
 
 # 包含R对象数据data
-usethis::use_data(mydata, overwrite = TRUE)
+usethis::use_data(expr_tpm, overwrite = TRUE)
 # 记得文档化数据
 #' 数据集：my_data
 #'

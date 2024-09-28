@@ -274,6 +274,7 @@ plot_signature <- function(df_long, gene_set, x = "group", y = "Score",
 plot_signature_parallel <- function(df_long, gene_sets, output_dir = "results", x = "group", y = "Score",
                                     fill = "group", palette = c("#2E86C1", "#E74C3C", "#27AE60"), group_levels = NULL, ...) {
   # 确保输出目录存在
+  fs::dir_create(output_dir)
   future::plan(
     future::multicore(
       workers = ifelse(future::availableCores(constraints = "multicore") < 128,
